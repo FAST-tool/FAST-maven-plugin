@@ -1,16 +1,11 @@
 package sab2.br.ufpe.cin.core;
 
 import java.io.BufferedReader;
-import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.MojoFailureException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.concurrent.Executors;
 
 import javax.inject.Named;
-
-import org.apache.maven.plugin.MojoExecutionException;
 
 //import com.google.inject.Singleton;
 

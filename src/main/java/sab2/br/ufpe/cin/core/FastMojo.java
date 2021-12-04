@@ -1,8 +1,5 @@
 package sab2.br.ufpe.cin.core;
 
-
-import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
-import org.apache.maven.model.Model;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -14,21 +11,11 @@ import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 
-import de.westemeyer.version.model.Artifact;
-import de.westemeyer.version.service.ArtifactVersionCollector;
-
 import javax.inject.Inject;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.file.Paths;
-import java.util.Scanner;
-import java.util.Set;
-
-import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 
 
 /**

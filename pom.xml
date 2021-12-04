@@ -1,149 +1,96 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>sab2.br.ufpe.cin</groupId>
-  <artifactId>fast-maven-plugin</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>FAST-maven-plugin</name>
-  <description>DESCRIPTION [ TODO]</description>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>sab2.br.ufpe.cin</groupId>
+	<artifactId>fast-maven-plugin</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>FAST-maven-plugin</name>
+	<description>DESCRIPTION [ TODO]</description>
 	<packaging>maven-plugin</packaging>
 
-  
-  <properties>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-  </properties>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
 
 	<dependencies>
-  	<!-- https://mvnrepository.com/artifact/org.apache.maven/maven-plugin-api -->
-	<dependency>
-	    <groupId>org.apache.maven</groupId>
-	    <artifactId>maven-plugin-api</artifactId>
-	    <version>3.6.0</version>
-	    <scope>provided</scope>
-	</dependency>
-  
-  	<!-- https://mvnrepository.com/artifact/org.apache.maven/maven-core -->
-	<dependency>
-	    <groupId>org.apache.maven</groupId>
-	    <artifactId>maven-core</artifactId>
-	    <version>3.6.0</version>
-	    <scope>provided</scope>
-	</dependency>
-  
-  	<!-- https://mvnrepository.com/artifact/org.apache.maven.plugin-tools/maven-plugin-annotations -->
-	<dependency>
-	    <groupId>org.apache.maven.plugin-tools</groupId>
-	    <artifactId>maven-plugin-annotations</artifactId>
-	    <version>3.5</version>
-	    <scope>provided</scope>
-	</dependency>
-	
-	<dependency>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/org.eclipse.jgit/org.eclipse.jgit -->
-	<dependency>
-	    <groupId>org.eclipse.jgit</groupId>
-	    <artifactId>org.eclipse.jgit</artifactId>
-	    <version>4.8.0.201706111038-r</version>
-	</dependency>
-		 <dependency>
-	    <groupId>de.westemeyer</groupId>
-	    <artifactId>artifact-version-service</artifactId>
-	    <version>1.0.2</version>
-	  </dependency>
-  </dependencies>
+		<!-- https://mvnrepository.com/artifact/org.apache.maven/maven-plugin-api -->
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-plugin-api</artifactId>
+			<version>3.6.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.maven/maven-core -->
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-core</artifactId>
+			<version>3.6.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugin-tools/maven-plugin-annotations -->
+		<dependency>
+			<groupId>org.apache.maven.plugin-tools</groupId>
+			<artifactId>maven-plugin-annotations</artifactId>
+			<version>3.5</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.8.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.eclipse.jgit/org.eclipse.jgit -->
+		<dependency>
+			<groupId>org.eclipse.jgit</groupId>
+			<artifactId>org.eclipse.jgit</artifactId>
+			<version>4.8.0.201706111038-r</version>
+		</dependency>
+	</dependencies>
 
 
- <build>
-  	<pluginManagement>
-  		<plugins>
-  			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-plugin-plugin -->
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-plugin-plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-plugin-plugin</artifactId>
+					<version>3.6.0</version>
+				</plugin>
+				<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-site-plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.8.2</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
 			<plugin>
-			    <groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-plugin-plugin</artifactId>
-			    <version>3.6.0</version>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.0.2</version>
+				<configuration>
+					<outputDirectory>~/target/extra-resources</outputDirectory>
+					<resources>
+						<resource>
+							<directory>${project.basedir}/src/main/resources/FAST</directory>
+							<excludes>
+								<exclude>*.png</exclude>
+							</excludes>
+							<filtering>true</filtering>
+						</resource>
+					</resources>
+				</configuration>
 			</plugin>
-			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-site-plugin -->
-			<plugin>
-			    <groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-site-plugin</artifactId>
-			    <version>3.8.2</version>
-			</plugin>
-  		</plugins>
-  	</pluginManagement>
-  	<plugins>
+		</plugins>
+	</build>
 
-		<plugin>
-		    <artifactId>maven-resources-plugin</artifactId>
-		    <version>3.0.2</version>
-		    <configuration>
-		        <outputDirectory>~/target/extra-resources</outputDirectory>
-			    <resources>
-			        <resource>
-			            <directory>${project.basedir}/src/main/resources/FAST</directory>
-			            <excludes>
-			                <exclude>*.png</exclude>
-			            </excludes>
-			            <filtering>true</filtering>
-			        </resource>
-			    </resources>
-		    </configuration>
-		</plugin>
-		
-		
-		
-		<plugin>
-            <groupId>com.github.ekryd.echo-maven-plugin</groupId>
-            <artifactId>echo-maven-plugin</artifactId>
-            <version>1.2.0</version>
-            <inherited>false</inherited>
-            <executions>
-                <execution>
-                    <id>end</id>
-                    <goals>
-                        <goal>echo</goal>
-                    </goals>
-                    <phase>process-resources</phase>
-                    <configuration>
-                        <message>${line.separator}${line.separator}
-                            project.version = ${project.version}
-							maven_home = ${MAVEN_HOME}
-							java.home = ${java.home}
-							project.basedir = ${project.basedir}
-							project.build.directory = ${project.build.directory}
-							project.artifactId = ${project.artifactId}
-							project.groupId = ${project.groupId}
-							project.version = ${project.version}
-							env.PATH = ${env.PATH}
-							version = ${version}
-							name = ${name}
-							basedir = ${basedir}
-                            ${line.separator}
-                        </message>
-                    </configuration>
-                </execution>
-            </executions>
-        </plugin>
-        
-        <plugin>
-	      <groupId>de.westemeyer</groupId>
-	      <artifactId>artifact-version-maven-plugin</artifactId>
-	      <version>1.0.2</version>
-	      <executions>
-	        <execution>
-	          <goals>
-	            <goal>generate-service</goal>
-	          </goals>
-	        </execution>
-	      </executions>
-	    </plugin>
-  	</plugins>
-  </build>
-  
-  
 </project>
