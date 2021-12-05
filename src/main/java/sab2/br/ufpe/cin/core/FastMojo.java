@@ -33,12 +33,12 @@ public class FastMojo extends AbstractMojo {
 
     @Parameter(property = "project", readonly = true)
     private MavenProject project;
-    
+
     @Inject
     private CmdProvider cmdProvider;
-    
+
     private String fastMavenPluginFlagCMD = "[" + "\u001B[34m" + "\033[0;1m" + "FAST-maven-plugin" + "\033[0;0m" + "\u001B[0m" + "] ";
-    
+
     private static boolean checkIfAlgIsValid(String algname)
     {
         if (algname.equals("FAST-pw") || algname.equals("FAST-one") || algname.equals("FAST-log") || algname.equals("FAST-sqrt") || algname.equals("FAST-all")) {
@@ -47,30 +47,30 @@ public class FastMojo extends AbstractMojo {
         	return false;
         }
     }
-    
+
     private static String getPluginDir() {
-    	
+
     	String userDir = System.getProperty("user.home");
         String groupId = "sab2.br.ufpe.cin".replace(".", "/");
         String artifactId = "fast-maven-plugin";
         String version = "0.0.1-SNAPSHOT";
-    	
+
     	String pluginDir = String.format("%s/.m2/repository/%s/%s/%s", userDir, groupId, artifactId, version);
 
     	return pluginDir;
     }
-    
+
     public void cloneRepo()  {
-    	
+
     	String repoUrl = "https://github.com/DinoSaulo/FAST-parameterized";
-    	
+
     	String cloneDirectoryPath = getPluginDir() + "/FAST";
-    	
+
     	File dir = new File(cloneDirectoryPath);
         if (dir.exists() && dir.isDirectory()){
-        	
+
         	System.out.println(fastMavenPluginFlagCMD + "FAST repository already present");
-        	
+
         } else {
         	try {
         	    System.out.println(fastMavenPluginFlagCMD + "Cloning FAST repository ("+ repoUrl + ") in this Maven environment");
@@ -87,34 +87,34 @@ public class FastMojo extends AbstractMojo {
     }
 
     public void execute() throws MojoExecutionException, MojoFailureException {
-    	
-        
+
+
     	if (checkIfAlgIsValid(command)) {
-    		
+
     		cloneRepo();
-    		
+
     		String cmdReturn = cmdProvider.runCmdCommand(command);
     		System.out.println(fastMavenPluginFlagCMD + cmdReturn);
-    		
+
     	} else {
     		 System.out.println(fastMavenPluginFlagCMD + "\u001B[31m" + "\033[0;1m" + "Invalid algorithm name" + "\033[0;0m" + "\u001B[0m");
     	}
-    	
+
     }
-    
+
     public static void main(String[] args) throws IOException, XmlPullParserException {
-    	
+
         try {
             File file = new File(getPluginDir() + "/FAST");
             System.out.println(file.exists() && file.isDirectory());
          } catch(Exception e) {
             e.printStackTrace();
-         }   	
+         }
 
     	System.out.println("artifact = ");
-    	
+
 
 	}
 
-    
+
 }
