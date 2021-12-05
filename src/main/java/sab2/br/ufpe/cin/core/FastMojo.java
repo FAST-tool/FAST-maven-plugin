@@ -88,16 +88,52 @@ public class FastMojo extends AbstractMojo {
 
     public void execute() throws MojoExecutionException, MojoFailureException {
 
-
+    	//getLog().error("Erro");
     	if (checkIfAlgIsValid(command)) {
 
     		cloneRepo();
 
-    		String cmdReturn = cmdProvider.runCmdCommand(command);
-    		System.out.println(fastMavenPluginFlagCMD + cmdReturn);
+    		//check if python v3 if instaled
+    		String pythonVersion = cmdProvider.executeCommand("python3 --version");
+    		String version = pythonVersion.substring(0,8);
+
+    		if(!version.equals("Python 3")) {
+    			getLog().error("Python 3 não encontrado. A versão instalada é a " + version);
+    		} else {
+    			// verificar se o pip está instalado
+        		String pipVersion = cmdProvider.executeCommand("pip --version");
+        		String versionPip = pipVersion.substring(0,3);
+
+        		if(!versionPip.equals("pip")) {
+        			getLog().error("PIP não encontrado.");
+        		}
+
+        		// instalar o xxhash caso necessário
+        		String returnIntalationXxhash = cmdProvider.executeCommand("pip3 install -r " + getPluginDir() + "/FAST/requirements.txt");
+
+        		// executar a priorização
+        		String prioritizeFile = getPluginDir() + "/FAST/py/prioritize.py";
+
+        		String projectPath = System.getProperty("user.dir");;
+
+             	String priorizationCommand = String.format("python3 %s %s %s", prioritizeFile, projectPath, command);
+
+             	String returnOfPriorization = cmdProvider.executeCommand(priorizationCommand);
+             	
+             	boolean successOrFail = returnOfPriorization.contains("Test case prioritization completed");
+             	
+             	if(successOrFail) {
+             		getLog().info(returnOfPriorization);
+             	} else if(returnOfPriorization.contains("No modifications were found in the project tests")){
+             		getLog().warn(returnOfPriorization);
+             	} else {
+             		getLog().error(returnOfPriorization);
+             	}
+    		}    		
 
     	} else {
-    		 System.out.println(fastMavenPluginFlagCMD + "\u001B[31m" + "\033[0;1m" + "Invalid algorithm name" + "\033[0;0m" + "\u001B[0m");
+    		getLog().error( command + " - Invalid algorithm name");
+    		getLog().error("Options: FAST-pw, FAST-one, FAST-log, FAST-sqrt, FAST-all");
     	}
 
     }
