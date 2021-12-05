@@ -37,6 +37,8 @@ public class FastMojo extends AbstractMojo {
     @Inject
     private CmdProvider cmdProvider;
     
+    private String fastMavenPluginFlagCMD = "[" + "\u001B[34m" + "\033[0;1m" + "FAST-maven-plugin" + "\033[0;0m" + "\u001B[0m" + "] ";
+    
     private static boolean checkIfAlgIsValid(String algname)
     {
         if (algname.equals("FAST-pw") || algname.equals("FAST-one") || algname.equals("FAST-log") || algname.equals("FAST-sqrt") || algname.equals("FAST-all")) {
@@ -59,8 +61,6 @@ public class FastMojo extends AbstractMojo {
     }
     
     public void cloneRepo()  {
-    	
-    	String fastMavenPluginFlagCMD = "[" + "\u001B[34m" + "\033[0;1m" + "FAST-maven-plugin" + "\033[0;0m" + "\u001B[0m" + "] ";
     	
     	String repoUrl = "https://github.com/DinoSaulo/FAST-parameterized";
     	
@@ -94,9 +94,10 @@ public class FastMojo extends AbstractMojo {
     		cloneRepo();
     		
     		String cmdReturn = cmdProvider.runCmdCommand(command);
+    		System.out.println(fastMavenPluginFlagCMD + cmdReturn);
     		
     	} else {
-    		getLog().info("\u001B[31m" + "\033[0;1m" + "Invalid algorithm name" + "\033[0;0m" + "\u001B[0m");
+    		 System.out.println(fastMavenPluginFlagCMD + "\u001B[31m" + "\033[0;1m" + "Invalid algorithm name" + "\033[0;0m" + "\u001B[0m");
     	}
     	
     }
