@@ -3,9 +3,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.ufpe.cin.fast-tool</groupId>
 	<artifactId>fast-maven-plugin</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>maven-FAST-plugin</name>
-	<description>DESCRIPTION [ TODO]</description>
+	<description>
+		A plugin for prioritizing Java project unit tests based on similarity algorithms.
+		For more information access the repository https://github.com/FAST-tool/maven-FAST-plugin/
+	</description>
 	<packaging>maven-plugin</packaging>
 
 
