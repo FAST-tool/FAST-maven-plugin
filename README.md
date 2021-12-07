@@ -25,12 +25,12 @@ In order to replicate the project follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/DinoSaulo/FAST-maven-plugin
+   git clone https://github.com/FAST-tool/maven-FAST-plugin/
    ```
 
 2. Open the repository where the FAST-maven-plugin repository was cloned:
     ```bash
-    cd FAST-maven-plugin
+    cd maven-FAST-plugin
     ```
 
 3. Install the plugin in your environment:
@@ -82,7 +82,7 @@ In order to replicate the project follow these steps:
                     </configuration>
                 </plugin>
                 <plugin>
-                    <groupId>sab2.br.ufpe.cin</groupId>
+                    <groupId>br.ufpe.cin.fast-tool</groupId>
                     <artifactId>fast-maven-plugin</artifactId>
                     <version>0.0.1-SNAPSHOT</version>
                     <configuration>
@@ -91,7 +91,7 @@ In order to replicate the project follow these steps:
                     <executions>
                         <execution>
                             <goals>
-                                <goal>version</goal>
+                                <goal>FAST</goal>
                             </goals>
                         </execution>
                     </executions>
