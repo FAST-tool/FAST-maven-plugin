@@ -1,6 +1,6 @@
 # FAST-maven-plugin
 
-This repository is a implementation of the [FAST Approaches to Scalable Similarity-based Test Case Prioritization](https://github.com/icse18-FAST/FAST) project and the [FAST parameterized](https://github.com/DinoSaulo/FAST-parameterized), it is based on the following publication:
+This repository is a implementation of the [FAST Approaches to Scalable Similarity-based Test Case Prioritization](https://github.com/icse18-FAST/FAST) project and the [Maven-FAST](https://github.com/FAST-tool/maven-FAST), it is based on the following publication:
 
 > Breno Miranda, Emilio Cruciani, Roberto Verdecchia, and Antonia Bertolino. 2018. FAST Approaches to Scalable Similarity-based Test Case Prioritization. In *Proceedings of ICSE’18: 40th International Conference on Software Engineering, Gothenburg, Sweden, May 27-June 3, 2018 (ICSE’18)*, 11 pages. DOI: [10.1145/3180155.3180210](http://dx.doi.org/10.1145/3180155.3180210)
 
@@ -84,7 +84,7 @@ In order to replicate the project follow these steps:
                 <plugin>
                     <groupId>br.ufpe.cin.fast-tool</groupId>
                     <artifactId>fast-maven-plugin</artifactId>
-                    <version>0.0.1-SNAPSHOT</version>
+                    <version>1.0.0</version>
                     <configuration>
                         <command>FAST-pw</command>
                     </configuration>
