@@ -1,4 +1,4 @@
-package sab2.br.ufpe.cin.core;
+package br.ufpe.cin.fast_tool;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -44,7 +44,7 @@ public class FastMojo extends AbstractMojo {
     private static String getPluginDir() {
 
     	String userDir = System.getProperty("user.home");
-        String groupId = "sab2.br.ufpe.cin".replace(".", "/");
+        String groupId = "br.ufpe.cin.fast-tool".replace(".", "/");
         String artifactId = "fast-maven-plugin";
         String version = "0.0.1-SNAPSHOT";
 

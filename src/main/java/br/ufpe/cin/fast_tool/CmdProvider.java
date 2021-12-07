@@ -1,4 +1,4 @@
-package sab2.br.ufpe.cin.core;
+package br.ufpe.cin.fast_tool;
 
 import org.apache.maven.plugin.MojoExecutionException;
 
