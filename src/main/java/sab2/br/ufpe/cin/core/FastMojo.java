@@ -18,16 +18,9 @@ import java.io.IOException;
 import java.nio.file.Paths;
 
 
-/**
- * An example Maven Mojo that resolves the current project's git revision and adds that a new {@code exampleVersion}
- * property to the current Maven project.
- */
-@Mojo(name = "version", defaultPhase = LifecyclePhase.INITIALIZE)
+@Mojo(name = "FAST", defaultPhase = LifecyclePhase.GENERATE_TEST_RESOURCES)
 public class FastMojo extends AbstractMojo {
 
-    /**
-     * The git command used to retrieve the current commit hash.
-     */
     @Parameter(property = "alg.name", defaultValue = "FAST-pw")
     private String command;
 
@@ -62,7 +55,7 @@ public class FastMojo extends AbstractMojo {
 
     public void cloneRepo()  {
 
-    	String repoUrl = "https://github.com/DinoSaulo/FAST-parameterized";
+    	String repoUrl = "https://github.com/FAST-tool/maven-FAST";
 
     	String cloneDirectoryPath = getPluginDir() + "/FAST";
 
@@ -137,20 +130,5 @@ public class FastMojo extends AbstractMojo {
     	}
 
     }
-
-    public static void main(String[] args) throws IOException, XmlPullParserException {
-
-        try {
-            File file = new File(getPluginDir() + "/FAST");
-            System.out.println(file.exists() && file.isDirectory());
-         } catch(Exception e) {
-            e.printStackTrace();
-         }
-
-    	System.out.println("artifact = ");
-
-
-	}
-
 
 }

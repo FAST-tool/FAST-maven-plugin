@@ -6,10 +6,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import javax.inject.Named;
-import javax.inject.Singleton;
+//import javax.inject.Singleton;
 
 @Named
-@Singleton
+//@Singleton
 public class RuntimeExecCmdProvider implements CmdProvider {
 
     public String executeCommand(String command) throws MojoExecutionException {
