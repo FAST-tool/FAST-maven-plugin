@@ -81,7 +81,6 @@ public class FastMojo extends AbstractMojo {
 
     public void execute() throws MojoExecutionException, MojoFailureException {
 
-    	//getLog().error("Erro");
     	if (checkIfAlgIsValid(command)) {
 
     		cloneRepo();
@@ -91,20 +90,19 @@ public class FastMojo extends AbstractMojo {
     		String version = pythonVersion.substring(0,8);
 
     		if(!version.equals("Python 3")) {
-    			getLog().error("Python 3 não encontrado. A versão instalada é a " + version);
+    			getLog().error("Python 3 not found. The installed version is the " + version);
     		} else {
-    			// verificar se o pip está instalado
+    			// check if the pip is installed
         		String pipVersion = cmdProvider.executeCommand("pip --version");
         		String versionPip = pipVersion.substring(0,3);
-
         		if(!versionPip.equals("pip")) {
-        			getLog().error("PIP não encontrado.");
+        			getLog().error("PIP not found. Please install the PIP.");
         		}
 
-        		// instalar o xxhash caso necessário
+        		// install dependencies if necessary
         		String returnIntalationXxhash = cmdProvider.executeCommand("pip3 install -r " + getPluginDir() + "/FAST/requirements.txt");
 
-        		// executar a priorização
+        		// perform prioritization
         		String prioritizeFile = getPluginDir() + "/FAST/py/prioritize.py";
 
         		String projectPath = System.getProperty("user.dir");;
@@ -112,9 +110,9 @@ public class FastMojo extends AbstractMojo {
              	String priorizationCommand = String.format("python3 %s %s %s", prioritizeFile, projectPath, command);
 
              	String returnOfPriorization = cmdProvider.executeCommand(priorizationCommand);
-             	
+
              	boolean successOrFail = returnOfPriorization.contains("Test case prioritization completed");
-             	
+
              	if(successOrFail) {
              		getLog().info(returnOfPriorization);
              	} else if(returnOfPriorization.contains("No modifications were found in the project tests")){
@@ -122,7 +120,7 @@ public class FastMojo extends AbstractMojo {
              	} else {
              		getLog().error(returnOfPriorization);
              	}
-    		}    		
+    		}
 
     	} else {
     		getLog().error( command + " - Invalid algorithm name");
