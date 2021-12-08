@@ -86,7 +86,7 @@ In order to replicate the project follow these steps:
                     <artifactId>fast-maven-plugin</artifactId>
                     <version>1.0.0</version>
                     <configuration>
-                        <command>FAST-pw</command>
+                        <algorithm>FAST-pw</algorithm>
                     </configuration>
                     <executions>
                         <execution>

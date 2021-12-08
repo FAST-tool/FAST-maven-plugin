@@ -22,7 +22,7 @@ import java.nio.file.Paths;
 public class FastMojo extends AbstractMojo {
 
     @Parameter(property = "alg.name", defaultValue = "FAST-pw")
-    private String command;
+    private String algorithm;
 
     @Parameter(property = "project", readonly = true)
     private MavenProject project;
@@ -46,7 +46,7 @@ public class FastMojo extends AbstractMojo {
     	String userDir = System.getProperty("user.home");
         String groupId = "br.ufpe.cin.fast-tool".replace(".", "/");
         String artifactId = "fast-maven-plugin";
-        String version = "0.0.1-SNAPSHOT";
+        String version = "1.0.0";
 
     	String pluginDir = String.format("%s/.m2/repository/%s/%s/%s", userDir, groupId, artifactId, version);
 
@@ -81,7 +81,7 @@ public class FastMojo extends AbstractMojo {
 
     public void execute() throws MojoExecutionException, MojoFailureException {
 
-    	if (checkIfAlgIsValid(command)) {
+    	if (checkIfAlgIsValid(algorithm)) {
 
     		cloneRepo();
 
@@ -107,7 +107,7 @@ public class FastMojo extends AbstractMojo {
 
         		String projectPath = System.getProperty("user.dir");;
 
-             	String priorizationCommand = String.format("python3 %s %s %s", prioritizeFile, projectPath, command);
+             	String priorizationCommand = String.format("python3 %s %s %s", prioritizeFile, projectPath, algorithm);
 
              	String returnOfPriorization = cmdProvider.executeCommand(priorizationCommand);
 
@@ -123,7 +123,7 @@ public class FastMojo extends AbstractMojo {
     		}
 
     	} else {
-    		getLog().error( command + " - Invalid algorithm name");
+    		getLog().error( algorithm + " - Invalid algorithm name");
     		getLog().error("Options: FAST-pw, FAST-one, FAST-log, FAST-sqrt, FAST-all");
     	}
 
