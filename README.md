@@ -145,7 +145,8 @@ In order to replicate the project follow these steps:
       ```
 
       - To add instrumentation to the project's test classes, just run the command below:
-      Note: o <subject> é o caminho do seu projeto, como por exemplo ‘../my-projects/calculator’
+      
+         Note: The ```<subject>``` is the path of your project, for example '../my-projects/calculator'
 
          ```bash
             python3 ~/.m2/repository/br/ufpe/cin/fast-tool/fast-maven-plugin/1.0.0/FAST/tools/project-instrumentation.py <subject> add_instrumentation_to_the_project
