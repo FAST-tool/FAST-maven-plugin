@@ -1,6 +1,6 @@
 # FAST-maven-plugin
 
-This repository is a implementation of the [FAST Approaches to Scalable Similarity-based Test Case Prioritization](https://github.com/icse18-FAST/FAST) project and the [Maven-FAST](https://github.com/FAST-tool/maven-FAST), it is based on the following publication:
+This repository is a implementation of the [FAST Approaches to Scalable Similarity-based Test Case Prioritization](https://github.com/icse18-FAST/FAST) project and the [FAST-Maven](https://github.com/FAST-tool/maven-FAST), it is based on the following publication:
 
 > Breno Miranda, Emilio Cruciani, Roberto Verdecchia, and Antonia Bertolino. 2018. FAST Approaches to Scalable Similarity-based Test Case Prioritization. In *Proceedings of ICSE’18: 40th International Conference on Software Engineering, Gothenburg, Sweden, May 27-June 3, 2018 (ICSE’18)*, 11 pages. DOI: [10.1145/3180155.3180210](http://dx.doi.org/10.1145/3180155.3180210)
 
@@ -102,9 +102,19 @@ In order to replicate the project follow these steps:
         </build>
         ```
 
-- NOTE: The plugin will soon be published on [Maven Central Repository](https://search.maven.org/)
+   NOTE: The plugin will soon be published on [Maven Central Repository](https://search.maven.org/)
 
-5. If your project uses the plugin [apache-rat-plugin](https://mvnrepository.com/artifact/org.apache.rat/apache-rat-plugin) add the following lines to the file pom.xml
+5. Run the project tests
+
+      ```bash
+
+         mvn test
+      ```
+      
+      NOTE: **It is necessary that all test classes of your project are public to run the prioritized tests**
+
+
+6. If your project uses the plugin [apache-rat-plugin](https://mvnrepository.com/artifact/org.apache.rat/apache-rat-plugin) add the following lines to the file pom.xml
       ```xml
          <plugin>
             <groupId>org.apache.rat</groupId>
@@ -120,7 +130,7 @@ In order to replicate the project follow these steps:
 
       ```
    
-6. (OPTIONAL) Instrumented execution
+7. (OPTIONAL) Instrumented execution
 
    By default, when running the tests prioritized by JUnit, the test execution report is not displayed;
    In order to run the tests while the report is displayed, a tool was developed that implements the test code and displays the execution report.
