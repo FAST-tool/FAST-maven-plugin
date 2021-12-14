@@ -103,3 +103,45 @@ In order to replicate the project follow these steps:
         ```
 
 - NOTE: The plugin will soon be published on [Maven Central Repository](https://search.maven.org/)
+
+5. If your project uses the plugin [apache-rat-plugin](https://mvnrepository.com/artifact/org.apache.rat/apache-rat-plugin) add the following lines to the file pom.xml
+      ```xml
+         <plugin>
+            <groupId>org.apache.rat</groupId>
+            <artifactId>apache-rat-plugin</artifactId>
+            <configuration>
+               <excludes>
+                  **<exclude>.fast/**</exclude>**
+                  <exclude>src/test/java/fast/**</exclude>
+                  ...
+               </excludes>
+            </configuration>
+         </plugin>
+
+      ```
+   
+6. (OPTIONAL) Instrumented execution
+
+   By default, when running the tests prioritized by JUnit, the test execution report is not displayed;
+   In order to run the tests while the report is displayed, a tool was developed that implements the test code and displays the execution report.
+
+   To instrument the code, just add the following lines to the project's Java test classes:
+      ```java
+         import org.junit.jupiter.api.extension.ExtendWith;
+         import fast.FASTTestWatcher;
+
+
+         @ExtendWith(FASTTestWatcher.class)
+      ```
+
+      - To add instrumentation to the project's test classes, just run the command below:
+      Note: o <subject> é o caminho do seu projeto, como por exemplo ‘../my-projects/calculator’
+
+         ```bash
+            python3 ~/.m2/repository/br/ufpe/cin/fast-tool/fast-maven-plugin/1.0.0/FAST/tools/project-instrumentation.py <subject> add_instrumentation_to_the_project
+         ```
+
+      - To remove the instrumentation from the test classes, just run the command below:
+         ```bash
+            python3 ~/.m2/repository/br/ufpe/cin/fast-tool/fast-maven-plugin/1.0.0/FAST/tools/project-instrumentation.py <subject> add_instrumentation_to_the_project
+         ```
