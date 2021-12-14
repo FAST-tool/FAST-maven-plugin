@@ -111,7 +111,7 @@ In order to replicate the project follow these steps:
             <artifactId>apache-rat-plugin</artifactId>
             <configuration>
                <excludes>
-                  **<exclude>.fast/**</exclude>**
+                  <exclude>.fast/**</exclude>
                   <exclude>src/test/java/fast/**</exclude>
                   ...
                </excludes>
